@@ -1,0 +1,15 @@
+#docker container run -d -p 8080:80 --name apache httpd
+web:
+    image: httpd:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - ./:/usr/local/apache2/htdocs/
+    links:
+        - php
+php:
+    image: php:latest
+    ports:
+        - "9000:9000"
+    volumes:
+        - ./:/usr/local/apache2/htdocs/
